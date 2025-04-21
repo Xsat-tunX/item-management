@@ -28,6 +28,8 @@
                                 <th>名前</th>
                                 <th>種別</th>
                                 <th>詳細</th>
+                                <th>原価</th>
+                                <th>数量</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +39,9 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
+                                    <td>{{ $item->cost }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <th><a href="{{ route('item.edit', ['id' => $item->id]) }} " class="btn btn-default">編集</a></th>
                                 </tr>
                             @endforeach
                         </tbody>

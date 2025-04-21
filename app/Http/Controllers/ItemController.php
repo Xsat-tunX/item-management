@@ -47,6 +47,8 @@ class ItemController extends Controller
                 'name' => $request->name,
                 'type' => $request->type,
                 'detail' => $request->detail,
+                'cost' => $request->cost,
+                'quantity' => $request->quantity,
             ]);
 
             return redirect('/items');
@@ -54,4 +56,40 @@ class ItemController extends Controller
 
         return view('item.add');
     }
-}
+
+    /**
+     * 商品情報変更
+     */
+    public function edit($id)
+    {
+        // 商品一覧取得
+        $item = Item::find($id);
+
+        return view('item.edit', compact('item'));
+    }
+
+     /**
+     * 商品情報変更
+     */
+    public function update(Request $request,$id)
+    {
+        // バリデーション
+        $this->validate($request, [
+            'name' => 'required|max:100',
+        ]);
+
+        //既存の商品を取得
+        $item = Item::findOrFail($id);
+
+        // 商品情報変更
+        $item->update([
+            'name' => $request->name,
+            'type' => $request->type,
+            'detail' => $request->detail,
+            'cost' => $request->cost,
+        ]);
+
+        return redirect('/items');
+     }
+ }
+

@@ -3,7 +3,7 @@
 @section('title', '商品登録')
 
 @section('content_header')
-    <h1>商品登録</h1>
+    <h1>商品情報変更</h1>
 @stop
 
 @section('content')
@@ -20,37 +20,33 @@
             @endif
 
             <div class="card card-primary">
-                <form method="POST">
+                <form method="POST" action="{{ route('item.update', $item->id) }}">
                     @csrf
+                    @method('PUT')
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">名前</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="名前">
+                            <input type="text" class="form-control" id="name" name="name" value="{{ $item->name }}">
                         </div>
 
                         <div class="form-group">
                             <label for="type">種別</label>
-                            <input type="text" class="form-control" id="type" name="type" placeholder="種別">
+                            <input type="text" class="form-control" id="type" name="type" value="{{ $item->type }}">
                         </div>
 
                         <div class="form-group">
                             <label for="detail">詳細</label>
-                            <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明">
+                            <input type="text" class="form-control" id="detail" name="detail" value="{{ $item->detail }}">
                         </div>
 
                         <div class="form-group">
                             <label for="cost">原価</label>
-                            <input type="number" class="form-control" id="cost" name="cost" placeholder="原価">
+                            <input type="number" class="form-control" id="cost" name="cost" value="{{ $item->cost }}">
                         </div>
-
-                        <div class="form-group">
-                            <label for="quantity">数量</label>
-                            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="数量">
-                        </div>
-                    </div>
+                    </div>    
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">登録</button>
+                        <button type="submit" class="btn btn-primary">変更</button>
                     </div>
                 </form>
             </div>

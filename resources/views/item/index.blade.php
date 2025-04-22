@@ -41,7 +41,14 @@
                                     <td>{{ $item->detail }}</td>
                                     <td>{{ $item->cost }}</td>
                                     <td>{{ $item->quantity }}</td>
-                                    <th><a href="{{ route('item.edit', ['id' => $item->id]) }} " class="btn btn-default">編集</a></th>
+                                    <td><a href="{{ route('item.edit', ['id' => $item->id]) }} " class="btn btn-default">編集</a></td>
+                                    <td>
+                                        <form action="{{ route('item.delete', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('削除しますか？')">削除</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

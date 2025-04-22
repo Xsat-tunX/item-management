@@ -91,5 +91,17 @@ class ItemController extends Controller
 
         return redirect('/items');
      }
+
+     /**
+     * 商品削除
+     */
+    public function delete($id)
+    {
+        // 商品一覧取得
+        $item = Item::findOrFail($id);
+        $item->delete();
+
+        return redirect('/items')->with('success', '商品を削除しました。');
+    }
  }
 

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', '商品一覧')
+@section('title', '入荷処理')
 
 @section('content_header')
-    <h1>商品一覧</h1>
+    <h1>入荷商品一覧</h1>
 @stop
 
 @section('content')
@@ -34,22 +34,23 @@
                         </thead>
                         <tbody>
                             @foreach ($items as $item)
-                                <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->type }}</td>
-                                    <td>{{ $item->detail }}</td>
-                                    <td>{{ $item->cost }}</td>
-                                    <td>{{ $item->quantity }}</td>
-                                    <td><a href="{{ route('item.edit', ['id' => $item->id]) }} " class="btn btn-default">編集</a></td>
-                                    <td>
-                                        <form action="{{ route('item.delete', $item->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" onclick="return confirm('削除しますか？')"><i class="fas fa-trash-alt"></i>削除</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                <form action="{{ route('item.arriveUpdate',$item->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->detail }}</td>
+                                        <td>{{ $item->cost }}</td>
+                                        <td>
+                                            <input type="number" name="quantity" class="form-control" required>
+                                        </td>
+                                        <td>
+                                             <button type="submit" class="btn btn-primary" onclick="return confirm('登録してよろしいですか？')">登録</button>
+                                        </td>
+                                    </tr>
+                                </form>
                             @endforeach
                         </tbody>
                     </table>

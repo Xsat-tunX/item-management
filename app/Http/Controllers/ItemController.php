@@ -103,5 +103,34 @@ class ItemController extends Controller
 
         return redirect('/items')->with('success', '商品を削除しました。');
     }
+
+    /**
+     * 入荷処理
+     */
+    public function arrive()
+    {
+        // 商品一覧取得
+        $items = Item::all();
+
+        return view('item.arrive', compact('items'));
+    }
+
+    /**
+     * 数量加算
+     */
+    public function arriveUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'quantity' => 'required|integer|min:1'
+        ]);
+        $item = Item::findOrFail($id);
+
+        //入力された数量を現在の数量に加算
+        $item->quantity += $request->quantity;
+        $item->save();
+
+        return redirect()->route('item.arrive')->with('success','数量を変更しました。');
+    }
+
  }
 

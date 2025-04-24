@@ -296,6 +296,12 @@ return [
             'icon' => 'fas fa-gamepad',
         ],
 
+        [
+            'text' => '入荷処理',
+            'url'  => 'arrive',
+            'icon' => 'fas fa-box',
+        ],
+
         // AdminLTEデフォルト
         /*
         // Navbar items:

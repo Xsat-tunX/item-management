@@ -17,7 +17,7 @@
                         
                         <div class="card-header-center">
                             <form method="GET" action="{{ route('arrive.search') }}" class="search-form">
-                                <input type="text" class="searchForm-control" id="search" name="search" placeholder="商品名を入力" value="{{ request('search') }}">
+                                <input type="text" class="searchForm-control" id="search" name="search" placeholder="商品名を入力">
                                 <button type="submit" class="btn btn-primary">検索</button>
                             </form>
                         </div>

@@ -132,5 +132,74 @@ class ItemController extends Controller
         return redirect()->route('item.arrive')->with('success','数量を変更しました。');
     }
 
+    /**
+     * 入荷処理
+     */
+    public function sales()
+    {
+        // 商品一覧取得
+        $items = Item::all();
+
+        return view('item.sales', compact('items'));
+    }
+
+     /**
+     * 検索商品一覧
+     */
+    public function search(Request $request)
+    {
+        // 検索商品一覧取得
+        $keyword = $request->input('search');
+        $query = Item::query();
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%{$keyword}%")
+            ->orWhere('type', 'LIKE', "%{$keyword}%")
+            ->orWhere('detail', 'LIKE', "%{$keyword}%");
+        }
+
+        $items = $query->get();
+
+        return view('item.index', compact('items'));
+    }
+
+    /**
+     * 検索入荷処理一覧
+     */
+    public function arriveSearch(Request $request)
+    {
+        // 検索商品一覧取得
+        $keyword = $request->input('search');
+        $query = Item::query();
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%{$keyword}%")
+            ->orWhere('type', 'LIKE', "%{$keyword}%")
+            ->orWhere('detail', 'LIKE', "%{$keyword}%");
+        }
+
+        $items = $query->get();
+
+        return view('item.arrive', compact('items'));
+    }
+
+    /**
+     * 検索売上処理一覧
+     */
+    public function salesSearch(Request $request)
+    {
+        // 検索商品一覧取得
+        $keyword = $request->input('search');
+        $query = Item::query();
+        if(!empty($keyword)) {
+            $query->where('name', 'LIKE', "%{$keyword}%")
+            ->orWhere('type', 'LIKE', "%{$keyword}%")
+            ->orWhere('detail', 'LIKE', "%{$keyword}%");
+        }
+
+        $items = $query->get();
+
+        return view('item.sales', compact('items'));
+    }
+
+
  }
 

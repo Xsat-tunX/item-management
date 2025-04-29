@@ -291,15 +291,27 @@ return [
 
     'menu' => [
         [
+            'text' => 'ホーム',
+            'url'  => '',
+            'icon' => 'fas fa-home',
+        ],
+
+        [
             'text' => '商品一覧',
             'url'  => 'items',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-list',
         ],
 
         [
             'text' => '入荷処理',
             'url'  => 'arrive',
-            'icon' => 'fas fa-box',
+            'icon' => 'fas fa-truck',
+        ],
+
+        [
+            'text' => '売上処理',
+            'url'  => 'sales',
+            'icon' => 'fas fa-money-bill',
         ],
 
         // AdminLTEデフォルト

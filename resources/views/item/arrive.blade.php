@@ -36,6 +36,7 @@
                                 <th>詳細</th>
                                 <th>原価</th>
                                 <th>数量</th>
+                                <th>入荷数量</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,11 +50,12 @@
                                         <td>{{ $item->type }}</td>
                                         <td>{{ $item->detail }}</td>
                                         <td>{{ $item->cost }}</td>
+                                        <td>{{ $item->quantity }}</td>
                                         <td>
                                             <input type="number" name="quantity" class="arrive-form-control" required>
                                         </td>
                                         <td>
-                                             <button type="submit" class="btn btn-primary" onclick="return confirm('登録してよろしいですか？')">登録</button>
+                                             <button type="submit" class="btn btn-primary" onclick="return confirm('登録してよろしいですか？')">入荷登録</button>
                                         </td>
                                     </tr>
                                 </form>

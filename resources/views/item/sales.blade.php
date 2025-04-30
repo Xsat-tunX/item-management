@@ -135,24 +135,50 @@
             }
 
             //削除ボタン作成
-            let deleteButton = document.createElement('button');
+            const deleteButton = document.createElement('button');
             deleteButton.textContent = '削除';
-            deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+            deleteButton.classList.add('btn', 'btn-danger', 'btn-sm')
 
             //クリックしたら<tr>を削除
             deleteButton.addEventListener('click',function() {
                 newRow.remove();
             });
 
+            //売上登録ボタン作成
+            const salesButton = document.createElement('button');
+            salesButton.textContent = '売上登録';
+            salesButton.classList.add('btn', 'btn-primary', 'btn-sm');
+
+            salesButton.addEventListener('click', function() {
+                const price = newRow.querySelector('input[name="price"]').value;
+                const quantity = newRow.querySelector('input[name="quantity"]').value;
+                //バリデーション（空チェック）
+                if (!price || !quantity) {
+                    alert('売価と数量を入力して下さい。');
+                    return;
+                }
+
+                alert('登録 : 価格=${price} / 数量 = ${quantity}');
+                newRow.remove();
+            });
+            
+
+            //クリックしたら売上登録
+            // salesButton.addEventListener('click',function() {
+            //     newRow.remove();
+            // });
+
+
             //最後の<td>にボタン追加
-            const lastcell = newRow.querySelector('td:last-child');
-            if (lastcell) {
-                lastcell.appendChild(deleteButton);
-            } else {
-                //<td>が足りなかったら作ってもいい
+            let lastcell = newRow.querySelector('td:last-child');
+            if (!lastcell || lastcell.querySelector('input')) {
                 const td = document.createElement('td');
                 td.appendChild(deleteButton);
+                td.appendChild(salesButton);
                 newRow.appendChild(td);
+            } else {
+                lastcell.appendChild(deleteButton);
+                lastcell.appendChild(salesButton);
             }
         }
     });

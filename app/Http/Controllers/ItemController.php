@@ -105,7 +105,7 @@ class ItemController extends Controller
     }
 
     /**
-     * 入荷処理
+     * 入荷処理画面一覧
      */
     public function arrive()
     {

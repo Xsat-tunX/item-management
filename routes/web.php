@@ -60,3 +60,6 @@ Route::prefix('sales')->group(function () {
      //検索
      Route::get('/search', [App\Http\Controllers\ItemController::class, 'salesSearch'])->name('sales.search');
 });
+
+//売上登録
+Route::post('/sales/add', [App\Http\Controllers\SaleController::class, 'sale'])->name('sales.add');

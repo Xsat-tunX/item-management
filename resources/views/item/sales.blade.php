@@ -7,6 +7,11 @@
 @stop
 
 @section('content')
+<div id="config" 
+     data-sales-url="{{ route('sales.add') }}" 
+     data-csrf-token="{{ csrf_token() }}">
+</div>
+
 <!-- 商品一覧 -->
     <div class="row section-space">
         <div class="col-12">
@@ -37,8 +42,9 @@
                                     <th>種別</th>
                                     <th>詳細</th>
                                     <th>原価</th>
-                                    <th>売価</th>
                                     <th>数量</th>
+                                    <th>売価</th>
+                                    <th>売上数量</th>
                                 </tr>
                             </thead> 
                             <tbody id="item-list">
@@ -49,6 +55,7 @@
                                         <td>{{ $item->type }}</td>
                                         <td>{{ $item->detail }}</td>
                                         <td>{{ $item->cost }}</td>
+                                        <td>{{ $item->quantity }}</td>
                                         <td> <input type="number" name="price" class="sales-form-control" required></td>
                                         <td> <input type="number" name="quantity" class="sales-form-control" required></td>
                                     </tr>
@@ -84,8 +91,9 @@
                                     <th>種別</th>
                                     <th>詳細</th>
                                     <th>原価</th>
-                                    <th>売価</th>
                                     <th>数量</th>
+                                    <th>売価</th>
+                                    <th>売上数量</th>
                                 </tr>
                             </thead>
                             <tbody id="sales-list">
@@ -150,16 +158,53 @@
             salesButton.classList.add('btn', 'btn-primary', 'btn-sm');
 
             salesButton.addEventListener('click', function() {
+                const itemId = newRow.dataset.id;
                 const price = newRow.querySelector('input[name="price"]').value;
                 const quantity = newRow.querySelector('input[name="quantity"]').value;
-                //バリデーション（空チェック）
+                const config = document.getElementById('config');
+                const salesUrl = config.dataset.salesUrl;
+                const csrfToken = config.dataset.csrfToken;
+
                 if (!price || !quantity) {
                     alert('売価と数量を入力して下さい。');
                     return;
                 }
 
-                alert('登録 : 価格=${price} / 数量 = ${quantity}');
-                newRow.remove();
+                // フォーム作成
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = salesUrl;
+
+                // CSRFトークン
+                const csrf = document.createElement('input');
+                csrf.type = 'hidden';
+                csrf.name = '_token';
+                csrf.value = csrfToken;
+                form.appendChild(csrf);
+
+                // item_id
+                const inputId = document.createElement('input');
+                inputId.type = 'hidden';
+                inputId.name = 'item_id';
+                inputId.value = itemId;
+                form.appendChild(inputId);
+
+                // price
+                const inputPrice = document.createElement('input');
+                inputPrice.type = 'hidden';
+                inputPrice.name = 'price';
+                inputPrice.value = price;
+                form.appendChild(inputPrice);
+
+                // quantity
+                const inputQty = document.createElement('input');
+                inputQty.type = 'hidden';
+                inputQty.name = 'sales_quantity';
+                inputQty.value = quantity;
+                form.appendChild(inputQty);
+
+                document.body.appendChild(form);
+                form.submit();
             });
             
 

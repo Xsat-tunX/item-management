@@ -37,6 +37,6 @@ class saleController extends Controller
         $item->quantity -= $request->sales_quantity;
         $item->save();
 
-        return redirect()->route('sales.add')->with('success','売上を登録しました。');
+        return redirect()->route('item.sales')->with('success','売上を登録しました。');
     }
 }

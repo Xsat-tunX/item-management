@@ -7,11 +7,38 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="main">
+        <div class="main_header">
+            <div class="header_area">
+                <p class="heder_box">ユーザー数</p>
+                <p class="bottom_box">1</p>
+            </div>
+
+            <div class="header_area">
+                <p class="heder_box">今月の売上</p>
+                <p class="bottom_box">100,000円</p>
+            </div>
+
+        </div>
+
+        <div class="main_bottom">
+            <div class="bottom_area">
+                <p class="heder_box">商品数</p>
+                <p class="bottom_box">100</p>
+            </div>
+
+            <div class="bottom_area">
+                <p class="heder_box"></p>
+                <p class="bottom_box"></p>
+            </div>
+
+        </div>
+    </div>
 @stop
 
 @section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
 @stop
 
 @section('js')

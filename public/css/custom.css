@@ -83,33 +83,91 @@
     margin-right: 20px;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
 .main_header {
     display: flex;
     height: 300px;
+    justify-content: flex-start;
+    padding-left: 100px;
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
 .main_bottom {
     display: flex;
     height: 300px;
+    justify-content: flex-start;
+    padding-left: 100px;
+    margin-top: 50px;
 }
 
-.header_area {
-    background-color: #eee;
-    padding: 20px;
+.header_card, .bottom_card {
+    border: 2px solid grey;
+    border-radius: 20px;
     margin: 10px;
+    width: 300px;
+    height: 350px; /* ← 高さを統一 */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header_area, .middle_area, .bottom_area {
+    padding: 15px 15px 0 15px; /* 全体的に少し詰める */
+    flex-grow: 1;
+}
+
+.header_area p {
+    font-size: 0.85rem;
+    margin: 5px 5px;
+    padding-top: 10px;
+}
+
+.card_subtitle {
+    font-size: 20px;
+    margin: 5px 5px;
 }
 
 .bottom_area {
-    background-color: #eee;
-    padding: 20px;
-    margin: 10px;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    padding: 10px; /* 上下の余白を少なく */
+}
+
+/* bottom_area 内のリンク間隔も詰める */
+.bottom_area a {
+    margin: 3px 0;
+    font-size: 0.85rem;
+    margin: 5px 5px;
+    padding-top: 10px;
 }
 
 .heder_box {
     border-bottom: black;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.middle_box {
+    font-size: 16px;
+    margin: 5px 0;
 }
 
 .bottom_box {
-    text-align: center;
+    margin: 10px;
 }
 
+
+a {
+    /* display: block; */
+    margin: 5px 0;
+    text-decoration: none;
+    color: black;
+}

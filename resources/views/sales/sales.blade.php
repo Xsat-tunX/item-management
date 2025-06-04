@@ -76,10 +76,6 @@
                     <div class="card-header-left">
                         <h3 class="card-title">売上処理一覧</h3>
                     </div>
-                    
-                    <div class="card-header-right">
-                        <a href="{{ url('items/add') }}" class="btn btn-default">売上一括登録</a>
-                    </div>
                 </div>
                 <div class="sales-list card-body p-0">
                     <div class="table-scroll">
@@ -157,6 +153,8 @@
             salesButton.textContent = '売上登録';
             salesButton.classList.add('btn', 'btn-primary', 'btn-sm');
 
+            
+
             salesButton.addEventListener('click', function() {
                 const itemId = newRow.dataset.id;
                 const price = newRow.querySelector('input[name="price"]').value;
@@ -216,14 +214,18 @@
 
             //最後の<td>にボタン追加
             let lastcell = newRow.querySelector('td:last-child');
+            const btnWrapper = document.createElement('div');
+            btnWrapper.classList.add('btn-wrapper'); // クラス追加
+
+            btnWrapper.appendChild(salesButton);  // 売上登録を先に
+            btnWrapper.appendChild(deleteButton); // 削除を後に
+
             if (!lastcell || lastcell.querySelector('input')) {
                 const td = document.createElement('td');
-                td.appendChild(deleteButton);
-                td.appendChild(salesButton);
+                td.appendChild(btnWrapper);
                 newRow.appendChild(td);
             } else {
-                lastcell.appendChild(deleteButton);
-                lastcell.appendChild(salesButton);
+                lastcell.appendChild(btnWrapper);
             }
         }
     });

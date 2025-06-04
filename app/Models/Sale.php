@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Item;
 
 class Sale extends Model
 {
@@ -17,4 +18,15 @@ class Sale extends Model
         'sales_date',
     ];
 
+    protected $casts = [
+        'sales_date' => 'datetime',
+    ];
+
+    /**
+     * 商品とのリレーション
+     */
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'item_id');
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 //商品一覧画面
 Route::prefix('items')->group(function () {
-    Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\ItemController::class, 'index'])->name('item.index');
 
     //商品登録
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
@@ -41,25 +42,40 @@ Route::prefix('items')->group(function () {
     Route::get('/search', [App\Http\Controllers\ItemController::class, 'search'])->name('item.search');
 });
 
-//入荷処理画面
+//入荷関連
 Route::prefix('arrive')->group(function () {
-    Route::get('/', [App\Http\Controllers\ItemController::class, 'arrive'])->name('item.arrive');
+    Route::get('/', [App\Http\Controllers\ArriveController::class, 'arrive'])->name('item.arrive');
 
-    //数量更新
-    Route::put('/{id}/update', [App\Http\Controllers\ItemController::class, 'arriveUpdate'])->name('item.arriveUpdate');
+    //入荷処理
+    Route::put('/{id}/update', [App\Http\Controllers\ArriveController::class, 'arriveUpdate'])->name('item.arriveUpdate');
 
-    //検索
-    Route::get('/search', [App\Http\Controllers\ItemController::class, 'arriveSearch'])->name('arrive.search');
+    //入荷処理画面検索
+    Route::get('/search', [App\Http\Controllers\ArriveController::class, 'arriveSearch'])->name('arrive.search');
+
+    //入荷履歴一覧
+    Route::get('/history', [App\Http\Controllers\ArriveController::class, 'arriveHistory'])->name('arrive.history');
+
+     //入荷履歴画面検索
+     Route::get('/history/search', [App\Http\Controllers\ArriveController::class, 'searchTotal'])->name('arriveHistory.search');
+
 });
 
 
-//売上処理画面
-Route::prefix('sales')->group(function () {
-    Route::get('/', [App\Http\Controllers\ItemController::class, 'sales'])->name('item.sales');
+//売上関連
+Route::middleware('auth')->prefix('sales')->group(function () {
+    Route::get('/', [App\Http\Controllers\SaleController::class, 'sales'])->name('item.sales');
 
      //検索
-     Route::get('/search', [App\Http\Controllers\ItemController::class, 'salesSearch'])->name('sales.search');
+     Route::get('/search', [App\Http\Controllers\SaleController::class, 'salesSearch'])->name('sales.search');
+
+     //売上登録
+    Route::post('/add', [App\Http\Controllers\SaleController::class, 'sale'])->name('sales.add');
+
+    //売上履歴一覧
+    Route::get('/history', [App\Http\Controllers\SaleController::class, 'salesHistory'])->name('sales.history');
+
+    //売上履歴画面検索
+    Route::get('/history/search', [App\Http\Controllers\SaleController::class, 'searchTotal'])->name('salesHistory.search');
+
 });
 
-//売上登録
-Route::post('/sales/add', [App\Http\Controllers\SaleController::class, 'sale'])->name('sales.add');

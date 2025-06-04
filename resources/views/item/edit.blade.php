@@ -30,8 +30,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="type">種別</label>
-                            <input type="text" class="form-control" id="type" name="type" value="{{ $item->type }}">
+                            <label for="category">カテゴリー</label>
+                            <input type="text" class="form-control" id="category" name="category" value="{{ $item->category }}">
                         </div>
 
                         <div class="form-group">
@@ -47,6 +47,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">変更</button>
+                        <a href="{{ route('item.index') }}" class="btn btn-default ml-2">キャンセル</a>
                     </div>
                 </form>
             </div>

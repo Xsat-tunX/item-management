@@ -303,9 +303,21 @@ return [
         ],
 
         [
+            'text' => '入荷商品履歴',
+            'url'  => 'arrive/history',
+            'icon' => 'fas fa-book',
+        ],
+
+        [
             'text' => '入荷処理',
             'url'  => 'arrive',
             'icon' => 'fas fa-truck',
+        ],
+
+        [
+            'text' => '売上履歴',
+            'url'  => 'sales/history',
+            'icon' => 'fas fa-book',
         ],
 
         [

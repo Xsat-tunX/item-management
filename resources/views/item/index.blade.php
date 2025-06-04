@@ -32,7 +32,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>名前</th>
-                                <th>種別</th>
+                                <th>カテゴリー</th>
                                 <th>詳細</th>
                                 <th>原価</th>
                                 <th>数量</th>
@@ -43,7 +43,7 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->type }}</td>
+                                    <td>{{ $item->category }}</td>
                                     <td>{{ $item->detail }}</td>
                                     <td>{{ $item->cost }}</td>
                                     <td>{{ $item->quantity }}</td>
@@ -52,7 +52,7 @@
                                         <form action="{{ route('item.delete', $item->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('削除しますか？')"><i class="fas fa-trash-alt"></i>削除</button>
+                                            <button class="btn-danger" type="submit" onclick="return confirm('削除しますか？')">削除</button>
                                         </form>
                                     </td>
                                 </tr>

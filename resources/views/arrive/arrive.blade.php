@@ -26,13 +26,13 @@
                             <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
                         </div>
                     </div>
-                <div class="card-body table-responsive p-0">
+                <div class="card-body table-responsive p-0 ">
                     <table class="table table-hover text-nowrap">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>名前</th>
-                                <th>種別</th>
+                                <th>カテゴリー</th>
                                 <th>詳細</th>
                                 <th>原価</th>
                                 <th>数量</th>
@@ -47,7 +47,7 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->category }}</td>
                                         <td>{{ $item->detail }}</td>
                                         <td>{{ $item->cost }}</td>
                                         <td>{{ $item->quantity }}</td>

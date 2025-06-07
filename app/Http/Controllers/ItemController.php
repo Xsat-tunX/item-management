@@ -39,7 +39,11 @@ class ItemController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                'name' => 'required|max:100',
+                'name' => 'required|string|max:100',
+                'category' => 'nullable|string|max:50',
+                'detail' => 'nullable|string|max:100',
+                'cost' => 'required|integer|min:0',
+                'quantity' => 'required|integer|min:0',
             ]);
 
             // 商品登録

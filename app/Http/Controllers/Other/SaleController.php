@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Sale;
 use App\Models\Item;
 
-
 class SaleController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');

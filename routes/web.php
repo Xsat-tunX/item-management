@@ -62,7 +62,7 @@ Route::prefix('arrive')->group(function () {
 
 
 //売上関連
-Route::middleware('auth')->prefix('sales')->group(function () {
+Route::prefix('sales')->group(function () {
     Route::get('/', [App\Http\Controllers\SaleController::class, 'sales'])->name('item.sales');
 
      //検索

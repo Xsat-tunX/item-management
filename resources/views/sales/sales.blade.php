@@ -84,7 +84,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>名前</th>
-                                    <th>種別</th>
+                                    <th>カテゴリー</th>
                                     <th>詳細</th>
                                     <th>原価</th>
                                     <th>数量</th>

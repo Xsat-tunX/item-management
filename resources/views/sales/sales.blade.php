@@ -39,7 +39,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>名前</th>
-                                    <th>種別</th>
+                                    <th>カテゴリー</th>
                                     <th>詳細</th>
                                     <th>原価</th>
                                     <th>数量</th>
@@ -52,7 +52,7 @@
                                     <tr data-id="{{ $item->id }}">
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->type }}</td>
+                                        <td>{{ $item->category }}</td>
                                         <td>{{ $item->detail }}</td>
                                         <td>{{ $item->cost }}</td>
                                         <td>{{ $item->quantity }}</td>

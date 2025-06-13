@@ -88,6 +88,9 @@ class ItemController extends Controller
         // バリデーション
         $this->validate($request, [
             'name' => 'required|max:100',
+            'category' => 'nullable|string|max:50',
+            'detail' => 'nullable|string|max:100',
+            'cost' => 'required|integer|min:0',
         ]);
 
         //既存の商品を取得

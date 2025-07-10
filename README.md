@@ -1,11 +1,5 @@
 # Item Management 
 
-**日本語に対応した商品管理Webアプリケーション**  
-Heroku 上で一般公開中:  
-⇨ https://jp-item-managemen-kentasato-2b71506ac4e9.herokuapp.com/
-
----
-
 ##  概要
 
 個人経営の方むけの在庫管理と売上管理が行えるシステムになります。
@@ -25,7 +19,12 @@ Heroku 上で一般公開中:
 
 4. **売上処理（ドラッグ＆ドロップ）**
    - 商品を売上欄に移動し、処理をおこなうと在庫数が減少
-   - ドラッグ＆ドロップで簡単に売上処理（SortableJS 使用）
+   - ドラッグ＆ドロップで売上処理
+   #### デモ（操作GIF）
+
+    <p align="center">
+     <img src="https://jp-item-managemen-kentasato-2b71506ac4e9.herokuapp.com/images/demo.gif" width="600" />
+    </p>
 
 5. **売上一覧・集計**
    - 売上データの確認、シンプルな売上集計を表示
@@ -37,17 +36,25 @@ Heroku 上で一般公開中:
 ---
 
 ##  開発環境
+#### PHP 8.2.0
+#### Laravel 10.13.5
+#### mysql  9.2.0
 
+---
+
+## システム閲覧
+[アプリケーションページへ](https://jp-item-managemen-kentasato-2b71506ac4e9.herokuapp.com/)
+
+###  テストアカウント情報
+   - メールアドレス : test@test.com
+   - パスワード：test1234
 
 ---
 
 ##  設計書
 
----
+#### https://drive.google.com/drive/folders/1GKIgexkQTNyl_okYjvoiUP3Yu_c-iAgb?usp=sharing
 
-##  テストアカウント情報
-   - メールアドレス : test@test.com
-   - パスワード：test1234
 
 
 ##  使用技術
@@ -62,26 +69,3 @@ Heroku 上で一般公開中:
 | MySQL/PostgreSQL | データベース                        |
 
 ---
-
-##  ローカル開発環境セットアップ
-
-```bash
-# リポジトリをクローン
-git clone https://github.com/yourusername/jp-item-management.git
-cd jp-item-management
-
-# 環境変数ファイルを設定
-cp .env.example .env
-
-# 依存パッケージをインストール
-composer install
-npm install && npm run dev
-
-# アプリケーションキー生成
-php artisan key:generate
-
-# マイグレーションと初期データ
-php artisan migrate --seed
-
-# サーバーを起動
-php artisan serve

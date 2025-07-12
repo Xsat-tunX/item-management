@@ -69,7 +69,7 @@ Route::prefix('sales')->group(function () {
      //検索
      Route::get('/search', [App\Http\Controllers\SaleController::class, 'salesSearch'])->name('sales.search');
 
-     //売上登録
+     //売上登録処理
     Route::post('/add', [App\Http\Controllers\SaleController::class, 'sale'])->name('sales.add');
 
     //売上履歴一覧

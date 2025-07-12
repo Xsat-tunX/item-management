@@ -52,7 +52,7 @@
                         <a href="{{ route('sales.history') }}">売上一覧</a>
                     </div>
                     <div class="bottom_box"> 
-                        <a href="{{ route('sales.add') }}">売上処理</a>
+                        <a href="{{ route('item.sales') }}">売上処理</a>
                     </div>
                 </div>
             </div>
